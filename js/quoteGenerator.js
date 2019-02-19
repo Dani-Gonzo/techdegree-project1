@@ -1,20 +1,12 @@
 // Console test
 //require('./quoteList');
-/******************************************
-Treehouse Techdegree:
-FSJS project 1 - A Random Quote Generator
-******************************************/
 
 // Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
 
+// Variable used later for quote string generation
 let quoteToPrint = " ";
 
-/***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
-***/
+// Generates random number and returns the object at the array index
 function getRandomQuote(quotes) {
   let randomNum = Math.floor(Math.random() * (quotes.length + 1));
   return quotes[randomNum];
