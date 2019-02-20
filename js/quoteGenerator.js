@@ -35,6 +35,18 @@ function printQuote() {
   print(quoteToPrint);
 }
 
+function changeQuote() {
+  let intervalID = setInterval(printQuote, 20000);
+}
+
+function changeBgColor() {
+  let intervalID = setInterval(getRandomBgColor, 20000);
+}
+
+changeQuote();
+changeBgColor();
+
+
 /***
   When the "Show another quote" button is clicked, the event listener 
   below will be triggered, and it will call, or "invoke", the `printQuote` 
