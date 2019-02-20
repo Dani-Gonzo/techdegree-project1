@@ -4,6 +4,7 @@ function getRandomQuote(array) {
   return quotes[randomNum];
 }
 
+// Generates random number from 0 to array length, sets the number at that index to a hex value, and sets the background property of the body to that hex color
 function getRandomBgColor() {
   let colors = ["00c2d1", "ffae19", "002344", "008000", "808080", "e600e6", "33ccff"];
   let colorNum = Math.floor(Math.random() * colors.length);
@@ -35,10 +36,12 @@ function printQuote() {
   print(quoteToPrint);
 }
 
+// Automatically changes the quote after 20 seconds
 function changeQuote() {
   let intervalID = setInterval(printQuote, 20000);
 }
 
+// Automatically changes the background color after 20 seconds
 function changeBgColor() {
   let intervalID = setInterval(getRandomBgColor, 20000);
 }
@@ -55,4 +58,6 @@ changeBgColor();
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+// Calls getRandomBgColor when button is clicked to change bg color to randomly selected color from colors array
 document.getElementById("loadQuote").addEventListener("click", getRandomBgColor, false);
