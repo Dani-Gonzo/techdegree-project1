@@ -37,26 +37,12 @@ function printQuote() {
 }
 
 // Automatically changes the quote after 20 seconds
-function changeQuote() {
-  let intervalID = setInterval(printQuote, 20000);
-}
+setInterval(printQuote, 20000);
 
 // Automatically changes the background color after 20 seconds
-function changeBgColor() {
-  let intervalID = setInterval(getRandomBgColor, 20000);
-}
+setInterval(getRandomBgColor, 20000);
 
-changeQuote();
-changeBgColor();
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
+// Do not change line below
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 // Calls getRandomBgColor when button is clicked to change bg color to randomly selected color from colors array
