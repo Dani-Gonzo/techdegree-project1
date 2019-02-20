@@ -1,40 +1,39 @@
-// Console test
-//require('./quoteList');
-
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-// Variable used later for quote string generation
-let quoteToPrint = " ";
-
-// Generates random number and returns the object at the array index
-function getRandomQuote(quotes) {
-  let randomNum = Math.floor(Math.random() * (quotes.length + 1));
+// Generates random number and returns the object at the array index of the generated number
+function getRandomQuote(array) {
+  let randomNum = Math.floor(Math.random() * (quotes.length));
   return quotes[randomNum];
 }
 
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+function getRandomBgColor() {
+  let colors = ["00c2d1", "ffae19", "002344", "008000", "808080", "e600e6", "33ccff"];
+  let colorNum = Math.floor(Math.random() * colors.length);
+  let color = "#" + colors[colorNum];
+  document.getElementById("main").style.background = color;
+}
+
+// Sets "quote-box" div to the completed string
+function print(quoteToPrint) {
+  var div = document.getElementById("quote-box");
+  div.innerHTML = quoteToPrint;
+}
+
+// Brings in a quote from the getRandomQuote() function
+// Adds the properties of the quote object to a string, if they exist, and calls print() to print out the completed string
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
-  quoteToPrint += "<h1>" + randomQuote.quote + "</h1> - " + randomQuote.source;
+  let quoteToPrint = '<h1 class="quote">' + randomQuote.quote + '</h1> <p class="source">' + randomQuote.source;
   if (randomQuote.citation) {
-    quoteToPrint += "<br>- " + randomQuote.citation;
+    quoteToPrint += '<span class="citation">' + randomQuote.citation + "</span>";
   }
-  else if (randomQuote.year) {
-    quoteToPrint += "<br>- " + randomQuote.year;
+  if (randomQuote.year) {
+    quoteToPrint += '<span class="year">' + randomQuote.year + "</span>";
   }
-  return quoteToPrint;
+  if (randomQuote.tag) {
+    quoteToPrint += '<span class="tag">' + randomQuote.tag + "</span>";
+  }
+  quoteToPrint += "</p>";
+  print(quoteToPrint);
 }
-document.write(printQuote());
-
-
 
 /***
   When the "Show another quote" button is clicked, the event listener 
@@ -44,6 +43,4 @@ document.write(printQuote());
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+document.getElementById("loadQuote").addEventListener("click", getRandomBgColor, false);
