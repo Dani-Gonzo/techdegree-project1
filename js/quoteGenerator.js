@@ -38,7 +38,7 @@ function printQuote() {
   getRandomBgColor();
 }
 
-// Automatically changes the quote after 20 seconds
+// Automatically changes the quote and background color after 20 seconds
 setInterval(printQuote, 20000);
 
 // Do not change line below
