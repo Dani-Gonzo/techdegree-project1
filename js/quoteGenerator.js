@@ -20,6 +20,7 @@ function print(quoteToPrint) {
 
 // Brings in a quote from the getRandomQuote() function
 // Adds the properties of the quote object to a string, if they exist, and calls print() to print out the completed string
+// Calls getRandomBgColor to change the background color
 function printQuote() {
   let randomQuote = getRandomQuote(quotes);
   let quoteToPrint = '<h1 class="quote">' + randomQuote.quote + '</h1> <p class="source">' + randomQuote.source;
@@ -34,16 +35,11 @@ function printQuote() {
   }
   quoteToPrint += "</p>";
   print(quoteToPrint);
+  getRandomBgColor();
 }
 
 // Automatically changes the quote after 20 seconds
 setInterval(printQuote, 20000);
 
-// Automatically changes the background color after 20 seconds
-setInterval(getRandomBgColor, 20000);
-
 // Do not change line below
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-// Calls getRandomBgColor when button is clicked to change bg color to randomly selected color from colors array
-document.getElementById("loadQuote").addEventListener("click", getRandomBgColor, false);
